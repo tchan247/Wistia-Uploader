@@ -1,0 +1,14 @@
+{
+  "name": "Wistia-Uploader",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "terry chan"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "dependencies": {
+    "angular": "~1.4.7"
+  }
+}
