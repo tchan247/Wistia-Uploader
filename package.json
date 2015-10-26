@@ -9,6 +9,11 @@
   "author": "terry chan",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.3"
+    "blueimp-file-upload-node": "^2.1.0",
+    "express": "^4.13.3",
+    "form-data": "^1.0.0-rc3",
+    "install": "^0.1.8",
+    "jquery-file-upload-middleware": "^0.1.7",
+    "request": "^2.65.0"
   }
 }

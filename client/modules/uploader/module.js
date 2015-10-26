@@ -1,7 +1,7 @@
 var upload = angular.module('upload', [])
 
-.controller('upload-ctrl', function($scope) {
-
+.controller('upload-ctrl', function($scope, uploadService) {
+  uploadService.attachPlugin();
 })
 
 .directive('uploader', function() {

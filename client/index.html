@@ -2,13 +2,56 @@
 <html ng-app="app" ng-controller="app-ctrl">
 <head>
   <title>Wistia-Uploader</title>
+
+  <link rel='stylesheet' href='./css/styles.css'>
 </head>
 
 <body>
-  <uploader> </uploader>
+  <!-- <uploader> </uploader> -->
 
-  <script src="./bower_components/angular/angular.min.js"></script>
+  <input id="fileupload" type="file" name="files[]" data-url="/upload" multiple>
+
+  <div id='progress'>
+    <div class="bar" style="width: 0%;"></div>
+  </div>
+
+  <!-- jQuery & file uploader -->
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+  <script src="./bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+  <script src="./bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+
+  <script>
+    $(function () {
+      $('#fileupload').fileupload({
+        // type: 'POST',
+        dataType: 'json',
+        // url: '/upload',
+        done: function (e, data) {
+          console.log('done')
+          
+          $.each(data.result.files, function (index, file) {
+            $('<p/>').text(file.name).appendTo(document.body);
+          });
+        },
+        progressall: function (e, data) {
+          console.log(data);
+          var progress = parseInt(data.loaded / data.total * 100, 10);
+          console.log(progress);
+          $('#progress .bar').css(
+            'width',
+            progress + '%'
+          );
+        }
+      });
+    });
+    
+  </script>
+
+  <!-- angular -->
+<!--   <script src="./bower_components/angular/angular.min.js"></script>
+  <script src="./bower_components/angular-route/angular-route.min.js"></script>
   <script src="./app.js"></script>
-  <script src="./modules/uploader/module.js"></script>
+  <script src="./modules/uploader/module.js"></script> -->
 </body>
 </html>
